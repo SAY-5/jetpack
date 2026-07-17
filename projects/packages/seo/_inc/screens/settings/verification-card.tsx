@@ -5,7 +5,7 @@ import { __, sprintf, _n } from '@wordpress/i18n';
 import { Badge, Card, CollapsibleCard, Stack } from '@wordpress/ui';
 import { VERIFICATION_SERVICES } from '../../data/verification-services';
 import GoogleVerificationField from './google-verification-field';
-import './style.scss';
+import styles from './verification-card.module.scss';
 import type { SettingsResponse, VerificationKey } from '../../data/settings-types';
 import type { FC } from 'react';
 
@@ -74,7 +74,7 @@ const VerificationCard: FC< Props > = ( {
 						onCommit={ onCommit }
 						disabled={ disabled }
 					/>
-					<div className="jetpack-seo-settings__verification-grid">
+					<div className={ styles.grid }>
 						{ VERIFICATION_SERVICES.filter( ( { key } ) => key !== 'google' ).map(
 							( { key, label } ) => (
 								<TextControl

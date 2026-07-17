@@ -1,0 +1,78 @@
+// Supporting copy shared by the schema forms.
+.help {
+	font-size: 12px;
+	color: var(--wpds-color-foreground-content-neutral-weak);
+}
+
+// Group labels match a control label's weight (the rows below hide their own
+// labels).
+.fieldLabel {
+	font-size: 11px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: var(--wpds-color-foreground-content-neutral);
+}
+
+// The URL input in a Social profiles row takes the remaining width so the
+// Remove button keeps to the right.
+.profileInput {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+}
+
+.profileError :global(.components-base-control__help),
+.fieldError :global(.components-base-control__help) {
+	color: var(--wpds-color-foreground-content-error-weak);
+}
+
+// Keep paired controls on one row and place their shared validation message
+// beneath both fields so helper text cannot change either control's width.
+.pairedFields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--wpds-dimension-gap-sm);
+	min-inline-size: 0;
+}
+
+.pairedField {
+	min-inline-size: 0;
+}
+
+.pairError {
+	grid-column: 1 / -1;
+	margin: 0;
+	font-size: 12px;
+	color: var(--wpds-color-foreground-content-error-weak);
+}
+
+.openingHoursRow {
+	display: grid;
+	grid-template-columns: 84px minmax(0, 1fr);
+	gap: var(--wpds-dimension-gap-sm);
+	align-items: start;
+}
+
+.avatar {
+	display: flex;
+	align-items: center;
+	gap: var(--wpds-dimension-gap-sm);
+
+	img {
+		inline-size: 48px;
+		block-size: 48px;
+		border-radius: 50%;
+	}
+}
+
+.dayLabel {
+	display: flex;
+	align-items: center;
+	min-inline-size: 84px;
+	min-block-size: 40px;
+}
+
+// Right-align schema Save buttons.
+.save {
+	display: flex;
+	justify-content: flex-end;
+}

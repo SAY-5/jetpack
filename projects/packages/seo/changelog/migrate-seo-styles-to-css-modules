@@ -1,0 +1,3 @@
+Significance: patch
+Type: changed
+Comment: Migrate SEO component styles to CSS Modules and expand stylelint coverage without changing user-facing behavior.

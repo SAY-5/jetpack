@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { Button, Stack } from '@wordpress/ui';
 import clsx from 'clsx';
 import { normalizeProfileUrl } from '../../../data/schema-settings-utils';
+import styles from './style.module.scss';
 import type { FC } from 'react';
 
 interface Props {
@@ -49,15 +50,15 @@ const ProfileUrlList: FC< Props > = ( { label, help, urls, onChange, disabled } 
 
 	return (
 		<Stack direction="column" gap="sm">
-			<span className="jetpack-seo-settings__schema-field-label">{ label }</span>
-			<span className="jetpack-seo-settings__title-tokens-label">{ help }</span>
+			<span className={ styles.fieldLabel }>{ label }</span>
+			<span className={ styles.help }>{ help }</span>
 			{ urls.map( ( profile, index ) => {
 				const profileError = profileErrors[ index ];
 				return (
 					<Stack key={ index } direction="row" gap="sm" align="flex-start" wrap="wrap">
 						<div
-							className={ clsx( 'jetpack-seo-settings__schema-profile-input', {
-								'jetpack-seo-settings__schema-profile-input--error': profileError,
+							className={ clsx( styles.profileInput, {
+								[ styles.profileError ]: profileError,
 							} ) }
 						>
 							<TextControl

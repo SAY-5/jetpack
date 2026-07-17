@@ -3,6 +3,7 @@
 import { __ } from '@wordpress/i18n';
 import { Card, CollapsibleCard } from '@wordpress/ui';
 import getSite from '../../data/get-site';
+import styles from './social-previews-card.module.scss';
 import type { SiteData } from '../../data/get-site';
 import type { FC } from 'react';
 
@@ -24,7 +25,7 @@ function hostname( url: string ): string {
 // is hidden from assistive tech — the heading text already names the platform.
 
 const GoogleIcon: FC = () => (
-	<svg className="jetpack-seo-preview__platform-icon" viewBox="0 0 48 48" aria-hidden="true">
+	<svg className={ styles.platformIcon } viewBox="0 0 48 48" aria-hidden="true">
 		<path
 			fill="#EA4335"
 			d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
@@ -45,36 +46,26 @@ const GoogleIcon: FC = () => (
 );
 
 const FacebookIcon: FC = () => (
-	<svg
-		className="jetpack-seo-preview__platform-icon"
-		viewBox="0 0 24 24"
-		fill="#1877F2"
-		aria-hidden="true"
-	>
+	<svg className={ styles.platformIcon } viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
 		<path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z" />
 	</svg>
 );
 
 const XIcon: FC = () => (
-	<svg
-		className="jetpack-seo-preview__platform-icon"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
+	<svg className={ styles.platformIcon } viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 		<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
 	</svg>
 );
 
 /** How the home page appears as a Google search result. */
 const GooglePreview: FC< PreviewProps > = ( { site, description } ) => (
-	<div className="jetpack-seo-preview jetpack-seo-preview--google">
-		<div className="jetpack-seo-preview__google-site">
-			{ site.icon && <img className="jetpack-seo-preview__favicon" src={ site.icon } alt="" /> }
-			<div className="jetpack-seo-preview__google-url">{ hostname( site.url ) }</div>
+	<div className={ `${ styles.preview } ${ styles.google }` }>
+		<div className={ styles.googleSite }>
+			{ site.icon && <img className={ styles.favicon } src={ site.icon } alt="" /> }
+			<div className={ styles.googleUrl }>{ hostname( site.url ) }</div>
 		</div>
-		<div className="jetpack-seo-preview__google-title">{ site.title }</div>
-		{ description && <div className="jetpack-seo-preview__desc">{ description }</div> }
+		<div className={ styles.googleTitle }>{ site.title }</div>
+		{ description && <div className={ styles.description }>{ description }</div> }
 	</div>
 );
 
@@ -84,17 +75,14 @@ const GooglePreview: FC< PreviewProps > = ( { site, description } ) => (
  * one component.
  */
 const LinkCardPreview: FC< PreviewProps > = ( { site, description } ) => (
-	<div className="jetpack-seo-preview jetpack-seo-preview--card">
+	<div className={ `${ styles.preview } ${ styles.card }` }>
 		{ site.image && (
-			<div
-				className="jetpack-seo-preview__image"
-				style={ { backgroundImage: `url(${ site.image })` } }
-			/>
+			<div className={ styles.image } style={ { backgroundImage: `url(${ site.image })` } } />
 		) }
-		<div className="jetpack-seo-preview__card-body">
-			<div className="jetpack-seo-preview__card-domain">{ hostname( site.url ) }</div>
-			<div className="jetpack-seo-preview__card-title">{ site.title }</div>
-			{ description && <div className="jetpack-seo-preview__desc">{ description }</div> }
+		<div className={ styles.cardBody }>
+			<div className={ styles.cardDomain }>{ hostname( site.url ) }</div>
+			<div className={ styles.cardTitle }>{ site.title }</div>
+			{ description && <div className={ styles.description }>{ description }</div> }
 		</div>
 	</div>
 );
@@ -132,31 +120,31 @@ const SocialPreviewsCard: FC< Props > = ( { description } ) => {
 				<Card.Title>{ __( 'Search & social previews', 'jetpack-seo' ) }</Card.Title>
 			</CollapsibleCard.Header>
 			<CollapsibleCard.Content>
-				<p className="jetpack-seo-settings__preview-intro">
+				<p className={ styles.intro }>
 					{ __(
 						'A preview of how your home page looks in search results and when shared on social media. It updates as you edit the front-page description above.',
 						'jetpack-seo'
 					) }
 				</p>
-				<div className="jetpack-seo-settings__preview-list">
+				<div className={ styles.list }>
 					{ /* Each block: a platform heading above its preview. The border is on
 					   the preview itself (not a group box around heading + preview). */ }
 					<div>
-						<h3 className="jetpack-seo-settings__preview-label">
+						<h3 className={ styles.label }>
 							<GoogleIcon />
 							{ __( 'Google search result', 'jetpack-seo' ) }
 						</h3>
 						<GooglePreview site={ site } description={ description } />
 					</div>
 					<div>
-						<h3 className="jetpack-seo-settings__preview-label">
+						<h3 className={ styles.label }>
 							<FacebookIcon />
 							{ __( 'Facebook', 'jetpack-seo' ) }
 						</h3>
 						<LinkCardPreview site={ site } description={ description } />
 					</div>
 					<div>
-						<h3 className="jetpack-seo-settings__preview-label">
+						<h3 className={ styles.label }>
 							<XIcon />
 							{ __( 'X (Twitter)', 'jetpack-seo' ) }
 						</h3>

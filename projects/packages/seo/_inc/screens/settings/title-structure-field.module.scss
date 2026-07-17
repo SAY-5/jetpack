@@ -1,0 +1,63 @@
+// One page type's title editor: field, insert buttons, then a preview + Save
+// footer. Not boxed — rows are separated by a hairline divider (below), the
+// standard settings-list pattern, so the card doesn't read as boxes-in-a-box.
+.row {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wpds-dimension-gap-md);
+}
+
+// Hairline divider between rows (not a box). The parent Stack's `lg` gap sits
+// above the rule; the matching padding sits below it, so the divider is evenly
+// spaced between adjacent rows.
+.row + .row {
+	padding-block-start: var(--wpds-dimension-gap-lg);
+	border-block-start: 1px solid var(--wpds-color-stroke-surface-neutral-weak);
+}
+
+// The insert-placeholder buttons and their caption, grouped tight under the
+// field they act on.
+.tokens {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wpds-dimension-gap-xs);
+}
+
+.help {
+	font-size: 12px;
+	color: var(--wpds-color-foreground-content-neutral-weak);
+}
+
+// Right-align the per-row Save buttons, matching the Newsletter settings
+// card-footer convention.
+.save {
+	display: flex;
+	justify-content: flex-end;
+}
+
+// Preview + Save share one row so there's no dead space beneath the preview.
+// The preview takes the remaining width and wraps when long; the Save button
+// keeps to the right with a gap between, so a long preview never crowds it.
+.footer {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--wpds-dimension-gap-lg);
+}
+
+.footer .preview {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+	overflow-wrap: anywhere;
+}
+
+.footer .save {
+	flex-shrink: 0;
+	// Keep Save at the right edge even when there's no preview yet.
+	margin-inline-start: auto;
+}
+
+// Live preview of the rendered title. Plain text flush with the field content
+// above it (no box), so "Preview:" lines up with the rest of the row.
+.preview {
+	font-size: 13px;
+}

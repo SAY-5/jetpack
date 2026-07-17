@@ -15,7 +15,7 @@ import {
 	stringToTokens,
 	tokensToString,
 } from '../../data/title-format-tokens';
-import './style.scss';
+import styles from './title-structure-field.module.scss';
 import type { TitleFormatToken } from '../../data/settings-types';
 import type { FC } from 'react';
 
@@ -91,7 +91,7 @@ const TitleStructureRow: FC< RowProps > = ( {
 	);
 
 	return (
-		<div className="jetpack-seo-settings__title-row">
+		<div className={ styles.row }>
 			<TextControl
 				ref={ inputRef }
 				label={ label }
@@ -101,8 +101,8 @@ const TitleStructureRow: FC< RowProps > = ( {
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 			/>
-			<div className="jetpack-seo-settings__title-tokens">
-				<span className="jetpack-seo-settings__title-tokens-label">{ insertLabel }</span>
+			<div className={ styles.tokens }>
+				<span className={ styles.help }>{ insertLabel }</span>
 				<Stack direction="row" gap="xs" wrap="wrap">
 					{ PAGE_TYPE_SUGGESTIONS[ pageTypeId ].map( tokenId => (
 						<Button
@@ -118,13 +118,13 @@ const TitleStructureRow: FC< RowProps > = ( {
 					) ) }
 				</Stack>
 			</div>
-			<div className="jetpack-seo-settings__title-footer">
+			<div className={ styles.footer }>
 				{ tokens.length > 0 && (
-					<div className="jetpack-seo-settings__preview">
+					<div className={ styles.preview }>
 						<strong>{ previewLabel }:</strong> { preview }
 					</div>
 				) }
-				<div className="jetpack-seo-settings__save">
+				<div className={ styles.save }>
 					<Button onClick={ onSave } disabled={ disabled || ! canSave }>
 						{ saveLabel }
 					</Button>

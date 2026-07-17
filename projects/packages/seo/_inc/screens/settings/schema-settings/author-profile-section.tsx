@@ -4,6 +4,7 @@ import { TextControl, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Button, Stack } from '@wordpress/ui';
 import ProfileUrlList, { hasProfileUrlErrors } from './profile-url-list';
+import styles from './style.module.scss';
 import type { AuthorProfileForm } from '../../../data/use-author-profile';
 import type { FC } from 'react';
 
@@ -38,7 +39,7 @@ const AuthorProfileSection: FC< Props > = ( { form } ) => {
 
 	return (
 		<Stack direction="column" gap="lg">
-			<span className="jetpack-seo-settings__title-tokens-label">
+			<span className={ styles.help }>
 				{ __(
 					'Shown as Person schema on your articles and author archive. Name, bio, and website update your WordPress profile.',
 					'jetpack-seo'
@@ -76,10 +77,8 @@ const AuthorProfileSection: FC< Props > = ( { form } ) => {
 			/>
 
 			<Stack direction="column" gap="sm">
-				<span className="jetpack-seo-settings__schema-field-label">
-					{ __( 'Avatar', 'jetpack-seo' ) }
-				</span>
-				<div className="jetpack-seo-settings__schema-avatar">
+				<span className={ styles.fieldLabel }>{ __( 'Avatar', 'jetpack-seo' ) }</span>
+				<div className={ styles.avatar }>
 					{ avatarUrl ? (
 						<img src={ avatarUrl } alt={ __( 'Author avatar', 'jetpack-seo' ) } />
 					) : null }
@@ -109,7 +108,7 @@ const AuthorProfileSection: FC< Props > = ( { form } ) => {
 				disabled={ disabled }
 			/>
 
-			<div className="jetpack-seo-settings__save">
+			<div className={ styles.save }>
 				<Button
 					onClick={ save }
 					disabled={ disabled || ! isDirty || hasNameError || hasProfileErrors }

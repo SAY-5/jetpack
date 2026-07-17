@@ -4,6 +4,7 @@ import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Button, Stack } from '@wordpress/ui';
 import LocalBusinessFields, { hasLocalBusinessErrors } from './local-business-fields';
+import styles from './style.module.scss';
 import type { SchemaSettingsForm } from '../../../data/use-schema-settings';
 import type { FC } from 'react';
 
@@ -46,7 +47,7 @@ const LocalBusinessSection: FC< Props > = ( { form } ) => {
 
 			{ localBusiness.enabled && <LocalBusinessFields form={ form } /> }
 
-			<div className="jetpack-seo-settings__save">
+			<div className={ styles.save }>
 				<Button
 					onClick={ saveLocalBusiness }
 					disabled={

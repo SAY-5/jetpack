@@ -68,7 +68,7 @@ const GoogleVerificationField: FC< Props > = ( { value, onChange, onCommit, disa
 	// `unavailable` (e.g. a `forbidden` response on an under-construction site).
 	if ( ! isConnected || state === 'unavailable' ) {
 		return (
-			<div className="jetpack-seo-settings__google-verification">
+			<div>
 				<TextControl
 					label={ __( 'Google', 'jetpack-seo' ) }
 					value={ value }
@@ -84,7 +84,7 @@ const GoogleVerificationField: FC< Props > = ( { value, onChange, onCommit, disa
 	}
 
 	return (
-		<Stack direction="column" gap="md" className="jetpack-seo-settings__google-verification">
+		<Stack direction="column" gap="md">
 			<Stack direction="row" justify="space-between" align="center" gap="sm">
 				<strong>{ __( 'Google', 'jetpack-seo' ) }</strong>
 				{ state === 'verified' && (

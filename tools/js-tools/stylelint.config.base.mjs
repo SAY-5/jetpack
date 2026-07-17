@@ -100,6 +100,7 @@ const baseConfig = {
 				'projects/packages/premium-analytics/**/*.{css,scss,sass}',
 				'projects/packages/publicize/routes/**/*.{css,scss,sass}',
 				'projects/packages/scan/routes/**/*.{css,scss,sass}',
+				'projects/packages/seo/_inc/**/*.{css,scss,sass}',
 				'projects/packages/seo/routes/**/*.{css,scss,sass}',
 				'projects/packages/videopress/routes/**/*.{css,scss,sass}',
 				// Webpack packages with `@wordpress/theme/postcss-plugins/postcss-ds-token-fallbacks`
